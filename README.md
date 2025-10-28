@@ -123,6 +123,39 @@ Example info:
 - "donkey-thunderhill-track-v0"
 - "donkey-circuit-launch-track-v0"
 
+## Creating Custom Tracks Programmatically
+
+You can now create custom tracks using Python code with the Track Builder API:
+
+```python
+from gym_donkeycar.core import TrackBuilder
+
+# Create a simple track
+builder = TrackBuilder(name="my_track", width=4.0)
+builder.add_straight(100.0)  # 100m straight
+builder.add_curve(31.4, radius=20.0, angle=90.0, direction="left")  # 90° turn
+builder.add_straight(50.0)   # 50m straight
+
+# Get the track configuration
+track_config = builder.build()
+
+# Or use predefined templates
+from gym_donkeycar.core import create_simple_oval, create_figure_eight
+
+oval_track = create_simple_oval(length=100.0, width=60.0)
+figure_eight = create_figure_eight(size=50.0)
+```
+
+**Features:**
+- Build tracks programmatically with straight sections, curves, and elevation changes
+- Use method chaining for concise track definitions
+- Save and load track configurations as JSON
+- Predefined track templates (oval, figure-eight, S-curve)
+- Ideal for procedural generation, research, and experimentation
+
+For detailed documentation and examples, see:
+- [Track Builder Documentation](docs/TRACK_BUILDER.md)
+- [Example Script](examples/create_custom_track.py)
 
 ## Codestyle
 
