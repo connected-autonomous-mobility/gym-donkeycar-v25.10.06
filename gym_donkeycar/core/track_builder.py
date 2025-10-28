@@ -4,6 +4,7 @@ author: GitHub Copilot
 date: 2025-10-28
 notes: Programmatic track creation API for gym-donkeycar
 """
+
 import json
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -11,14 +12,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 class TrackSegment:
     """
     Base class for track segments.
-    
+
     Track segments are the building blocks of a custom track.
     """
 
     def __init__(self, length: float):
         """
         Initialize a track segment.
-        
+
         :param length: Length of the segment in meters
         """
         self.length = length
@@ -38,7 +39,7 @@ class StraightSegment(TrackSegment):
     def __init__(self, length: float):
         """
         Create a straight track segment.
-        
+
         :param length: Length of the straight in meters
         """
         super().__init__(length)
@@ -51,7 +52,7 @@ class CurveSegment(TrackSegment):
     def __init__(self, length: float, radius: float, angle: float, direction: str = "left"):
         """
         Create a curved track segment.
-        
+
         :param length: Arc length of the curve in meters
         :param radius: Radius of the curve in meters
         :param angle: Angle of the curve in degrees
@@ -82,7 +83,7 @@ class ElevationSegment(TrackSegment):
     def __init__(self, length: float, height_change: float, gradient: Optional[float] = None):
         """
         Create a track segment with elevation change.
-        
+
         :param length: Length of the segment in meters
         :param height_change: Height change in meters (positive for uphill, negative for downhill)
         :param gradient: Optional gradient in degrees
@@ -107,7 +108,7 @@ class ElevationSegment(TrackSegment):
 class TrackBuilder:
     """
     Builder class for creating custom tracks programmatically.
-    
+
     Example:
         >>> from gym_donkeycar.core.track_builder import TrackBuilder
         >>> builder = TrackBuilder(name="my_custom_track", width=4.0)
@@ -118,10 +119,12 @@ class TrackBuilder:
         >>> track_config = builder.build()
     """
 
-    def __init__(self, name: str = "custom_track", width: float = 4.0, start_position: Optional[Tuple[float, float, float]] = None):
+    def __init__(
+        self, name: str = "custom_track", width: float = 4.0, start_position: Optional[Tuple[float, float, float]] = None
+    ):
         """
         Initialize the track builder.
-        
+
         :param name: Name of the track
         :param width: Width of the track in meters
         :param start_position: Starting position as (x, y, z) tuple
@@ -134,7 +137,7 @@ class TrackBuilder:
     def add_straight(self, length: float) -> "TrackBuilder":
         """
         Add a straight segment to the track.
-        
+
         :param length: Length of the straight in meters
         :return: Self for method chaining
         """
@@ -144,7 +147,7 @@ class TrackBuilder:
     def add_curve(self, length: float, radius: float, angle: float, direction: str = "left") -> "TrackBuilder":
         """
         Add a curved segment to the track.
-        
+
         :param length: Arc length of the curve in meters
         :param radius: Radius of the curve in meters
         :param angle: Angle of the curve in degrees
@@ -159,7 +162,7 @@ class TrackBuilder:
     def add_elevation(self, length: float, height_change: float, gradient: Optional[float] = None) -> "TrackBuilder":
         """
         Add a segment with elevation change.
-        
+
         :param length: Length of the segment in meters
         :param height_change: Height change in meters
         :param gradient: Optional gradient in degrees
@@ -171,7 +174,7 @@ class TrackBuilder:
     def add_segment(self, segment: TrackSegment) -> "TrackBuilder":
         """
         Add a custom segment to the track.
-        
+
         :param segment: TrackSegment instance
         :return: Self for method chaining
         """
@@ -181,7 +184,7 @@ class TrackBuilder:
     def clear(self) -> "TrackBuilder":
         """
         Clear all segments from the track.
-        
+
         :return: Self for method chaining
         """
         self.segments = []
@@ -190,7 +193,7 @@ class TrackBuilder:
     def build(self) -> Dict[str, Any]:
         """
         Build and return the track configuration.
-        
+
         :return: Dictionary containing the track configuration
         """
         return {
@@ -209,7 +212,7 @@ class TrackBuilder:
     def to_json(self, indent: Optional[int] = 2) -> str:
         """
         Build and return the track configuration as JSON.
-        
+
         :param indent: JSON indentation level (None for compact)
         :return: JSON string of the track configuration
         """
@@ -218,7 +221,7 @@ class TrackBuilder:
     def save(self, filepath: str) -> None:
         """
         Save the track configuration to a JSON file.
-        
+
         :param filepath: Path to the output JSON file
         """
         with open(filepath, "w") as f:
@@ -228,7 +231,7 @@ class TrackBuilder:
     def from_json(json_str: str) -> "TrackBuilder":
         """
         Create a TrackBuilder from a JSON string.
-        
+
         :param json_str: JSON string containing track configuration
         :return: TrackBuilder instance
         """
@@ -267,7 +270,7 @@ class TrackBuilder:
     def load(filepath: str) -> "TrackBuilder":
         """
         Load a track configuration from a JSON file.
-        
+
         :param filepath: Path to the input JSON file
         :return: TrackBuilder instance
         """
@@ -278,7 +281,7 @@ class TrackBuilder:
 def create_simple_oval(length: float = 100.0, width: float = 50.0, track_width: float = 4.0) -> Dict[str, Any]:
     """
     Create a simple oval track configuration.
-    
+
     :param length: Length of the straight sections in meters
     :param width: Width of the track (determines curve radius) in meters
     :param track_width: Width of the racing surface in meters
@@ -303,7 +306,7 @@ def create_simple_oval(length: float = 100.0, width: float = 50.0, track_width: 
 def create_figure_eight(size: float = 50.0, track_width: float = 4.0) -> Dict[str, Any]:
     """
     Create a figure-eight track configuration.
-    
+
     :param size: Size parameter for the track in meters
     :param track_width: Width of the racing surface in meters
     :return: Track configuration dictionary
@@ -328,7 +331,7 @@ def create_figure_eight(size: float = 50.0, track_width: float = 4.0) -> Dict[st
 def create_s_curve(straight_length: float = 40.0, curve_radius: float = 20.0, track_width: float = 4.0) -> Dict[str, Any]:
     """
     Create an S-curve track configuration.
-    
+
     :param straight_length: Length of straight sections in meters
     :param curve_radius: Radius of curves in meters
     :param track_width: Width of the racing surface in meters
