@@ -164,7 +164,8 @@ print(f"Circuit length: {circuit['total_length']:.2f} meters")
 print(f"Number of segments: {circuit['num_segments']}")
 
 # Save the track
-builder = TrackBuilder.from_json(str(circuit))
+import json
+builder = TrackBuilder.from_json(json.dumps(circuit))
 builder.save("racing_circuit.json")
 ```
 
