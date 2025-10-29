@@ -62,6 +62,10 @@ setup(
             # Type hints support
             "sphinx-autodoc-typehints",
         ],
+        "viz": [
+            # Track visualization
+            "matplotlib",
+        ],
     },
     license="MIT license",
     long_description=readme + "\n\n" + history,

@@ -35,9 +35,38 @@ python -c "from gym_donkeycar.core import create_simple_oval; import json; \
 python visualize_track.py my_track.json
 ```
 
+## visualize_track_matplotlib.py
+
+**Professional track visualization using matplotlib** - Creates high-quality graphical plots. Features:
+- **Left and right track boundaries** with clear lines
+- **Center line** (dashed red line)
+- **Shaded track surface** (filled polygon between boundaries)
+- **Segment IDs** with labels showing segment types
+- **Start position marker** (green dot)
+- **Track statistics** displayed on plot
+- **Grid lines** for reference
+- **Export to PNG/PDF** with customizable DPI
+
+Requirements:
+```bash
+pip install matplotlib
+```
+
+Usage:
+```bash
+# Display interactive plot
+python visualize_track_matplotlib.py my_track.json
+
+# Save to file
+python visualize_track_matplotlib.py my_track.json --save my_track.png
+
+# High resolution output
+python visualize_track_matplotlib.py my_track.json --save my_track.png --dpi 300
+```
+
 ## visualize_track_enhanced.py
 
-**Enhanced track visualization** with detailed boundaries and styling. Shows:
+**Enhanced ASCII track visualization** with detailed boundaries and styling. Shows:
 - **Left and right track boundaries** (clear edge markers)
 - **Center line** (dashed line down the middle)
 - **Shaded track surface** (filled area between boundaries)
