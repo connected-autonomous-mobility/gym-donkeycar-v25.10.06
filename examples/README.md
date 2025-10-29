@@ -16,6 +16,25 @@ Comprehensive examples showing how to create custom tracks programmatically usin
 - Saving and loading track configurations
 - Complex racing circuits
 
+## visualize_track.py
+
+Visualize track configurations from JSON files. Displays:
+- 2D top-down ASCII visualization of the track layout
+- Detailed track statistics (length, width, segments)
+- Individual segment information (type, length, angles, etc.)
+- Summary of segment types
+
+Usage:
+```bash
+# Create a track
+python -c "from gym_donkeycar.core import create_simple_oval; import json; \
+           track = create_simple_oval(); \
+           json.dump(track, open('my_track.json', 'w'), indent=2)"
+
+# Visualize it
+python visualize_track.py my_track.json
+```
+
 See also: [Track Builder Quick Start Guide](TRACK_BUILDER_QUICKSTART.md)
 
 ## reinforcement_learning
