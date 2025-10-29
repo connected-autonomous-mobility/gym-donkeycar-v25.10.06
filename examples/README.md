@@ -18,7 +18,7 @@ Comprehensive examples showing how to create custom tracks programmatically usin
 
 ## visualize_track.py
 
-Visualize track configurations from JSON files. Displays:
+Basic track visualization from JSON files. Displays:
 - 2D top-down ASCII visualization of the track layout
 - Detailed track statistics (length, width, segments)
 - Individual segment information (type, length, angles, etc.)
@@ -33,6 +33,24 @@ python -c "from gym_donkeycar.core import create_simple_oval; import json; \
 
 # Visualize it
 python visualize_track.py my_track.json
+```
+
+## visualize_track_enhanced.py
+
+**Enhanced track visualization** with detailed boundaries and styling. Shows:
+- **Left and right track boundaries** (clear edge markers)
+- **Center line** (dashed line down the middle)
+- **Shaded track surface** (filled area between boundaries)
+- **Segment IDs** (numbered markers for each segment)
+- **Clear boundary visualization** (distinguishable track edges)
+
+Usage:
+```bash
+# Basic usage
+python visualize_track_enhanced.py my_track.json
+
+# Custom dimensions
+python visualize_track_enhanced.py my_track.json --width 100 --height 50
 ```
 
 See also: [Track Builder Quick Start Guide](TRACK_BUILDER_QUICKSTART.md)
