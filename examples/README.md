@@ -2,6 +2,23 @@
 
 some sample code to use the gym-donkeycar environment
 
+## Sample Track Visualization
+
+A high-resolution sample track visualization is included to showcase the matplotlib visualization capabilities:
+
+**[sample_track_visualization.png](sample_track_visualization.png)** - 300 DPI example racing circuit
+
+The sample track (`sample_track.json`) demonstrates:
+- Complex racing circuit with 8 segments
+- Combination of straights, curves, and a hairpin turn
+- 588.5 meters total length
+- Professional visualization with boundaries, center line, and segment labels
+
+You can regenerate this visualization with:
+```bash
+python visualize_track_matplotlib.py sample_track.json --save sample_track_visualization.png --dpi 300
+```
+
 ## gym_test.py
 
 Some minimal code to load the gym-donkeycar environment and test
