@@ -14,10 +14,32 @@ The sample track (`sample_track.json`) demonstrates:
 - 588.5 meters total length
 - Professional visualization with boundaries, center line, and segment labels
 
-You can regenerate this visualization with:
-```bash
-python visualize_track_matplotlib.py sample_track.json --save sample_track_visualization.png --dpi 300
-```
+### Using sample_track.json
+
+**Important:** The JSON file is a track geometry specification, not directly loadable in the pre-built simulator. Use it for:
+
+1. **Visualization:**
+   ```bash
+   python visualize_track_matplotlib.py sample_track.json --save my_visualization.png --dpi 300
+   ```
+
+2. **As a blueprint for Unity development:**
+   - Load the JSON to understand track layout
+   - Use the segment data to build track geometry in Unity
+   - See [Getting Started Guide](../docs/GETTING_STARTED_WITH_CUSTOM_TRACKS.md) for details
+
+3. **Track design reference:**
+   ```python
+   import json
+   with open('sample_track.json') as f:
+       track = json.load(f)
+   
+   # Inspect segments for implementation
+   for seg in track['segments']:
+       print(f"{seg['type']}: {seg['length']}m")
+   ```
+
+**To run in the simulator:** Use built-in tracks like `donkey-generated-track-v0` or build a custom Unity scene following the [Getting Started Guide](../docs/GETTING_STARTED_WITH_CUSTOM_TRACKS.md#can-i-use-the-json-track-in-the-simulator-without-building-from-source).
 
 ## gym_test.py
 

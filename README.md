@@ -156,6 +156,7 @@ figure_eight = create_figure_eight(size=50.0)
 
 **Getting Started:**
 - [Getting Started with Custom Tracks](docs/GETTING_STARTED_WITH_CUSTOM_TRACKS.md) - Complete step-by-step guide
+- [Using JSON Tracks in Simulator](docs/USING_JSON_TRACKS_IN_SIMULATOR.md) - **How to use generated tracks (with/without building from source)**
 - [Track Builder Quick Start](examples/TRACK_BUILDER_QUICKSTART.md) - Quick reference
 - [Track Builder API Documentation](docs/TRACK_BUILDER.md) - Full API reference
 - [Example Scripts](examples/create_custom_track.py) - Code examples

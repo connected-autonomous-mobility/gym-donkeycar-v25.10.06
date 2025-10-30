@@ -149,6 +149,77 @@ See the [Track Visualization](#track-visualization) section below for more detai
 
 ## Step 5: Run in the Simulator
 
+### Can I Use the JSON Track in the Simulator Without Building from Source?
+
+**Current Status:** The Donkey Car simulator (pre-built binaries) uses pre-built Unity scenes and **cannot directly load JSON track files** without modification.
+
+**What the JSON Files Are For:**
+The Track Builder creates JSON files that describe track geometry as a specification format. These files are useful for:
+1. **Visualizing tracks** with the provided visualization tools
+2. **Sharing track designs** with collaborators
+3. **Documentation and planning** before implementing in Unity
+4. **Research and experimentation** with track layouts
+5. **Future integration** with procedural track generation systems
+
+### Options for Using Custom Tracks
+
+**Option 1: Use Built-in Simulator Tracks (No Build Required)**
+
+The simulator comes with several pre-built tracks that you can use immediately:
+- `donkey-warehouse-v0`
+- `donkey-generated-roads-v0`
+- `donkey-avc-sparkfun-v0`
+- `donkey-generated-track-v0`
+- `donkey-roboracingleague-track-v0`
+- `donkey-waveshare-v0`
+- `donkey-minimonaco-track-v0`
+- `donkey-warren-track-v0`
+- `donkey-thunderhill-track-v0`
+- `donkey-circuit-launch-track-v0`
+
+**Option 2: Build Custom Unity Scene (Requires Unity)**
+
+To use your JSON track in the simulator, you need to:
+1. Install Unity (version compatible with Donkey Sim)
+2. Clone the [Donkey Simulator source](https://github.com/tawnkramer/sdsandbox)
+3. Use the JSON as a blueprint to create track geometry in Unity
+4. Build the simulator with your custom track included
+
+**Option 3: Future Procedural Generation (Development Needed)**
+
+A future enhancement could add a procedural track generator that:
+- Reads JSON track files at runtime
+- Generates Unity geometry dynamically
+- Loads tracks without rebuilding the simulator
+
+This would require custom Unity plugin development.
+
+### Using the JSON as a Blueprint
+
+Even without direct simulator integration, the JSON track files are valuable:
+
+```python
+# Load and inspect your track design
+import json
+
+with open('examples/sample_track.json', 'r') as f:
+    track = json.load(f)
+
+print(f"Track: {track['name']}")
+print(f"Total Length: {track['total_length']}m")
+print(f"Track Width: {track['width']}m")
+print(f"Segments: {track['num_segments']}")
+
+# Use this information to build in Unity or another tool
+for i, segment in enumerate(track['segments'], 1):
+    print(f"\nSegment {i}: {segment['type']}")
+    print(f"  Length: {segment['length']}m")
+    if segment['type'] == 'curve':
+        print(f"  Radius: {segment['radius']}m")
+        print(f"  Angle: {segment['angle']}°")
+        print(f"  Direction: {segment['direction']}")
+```
+
 ### Understanding Track JSON Format
 
 The Track Builder creates JSON files that describe track geometry. These files contain:
@@ -156,11 +227,20 @@ The Track Builder creates JSON files that describe track geometry. These files c
 - Segment definitions (straight, curve, elevation)
 - Total length and segment count
 
-**Important Note:** The current Donkey Car simulator uses pre-built Unity scenes. The JSON track files created by the Track Builder API define track geometry that can be:
-1. Used as specifications for creating Unity scene tracks
-2. Loaded by custom track generation systems
-3. Used for procedural track generation tools
-4. Shared as track design blueprints
+**Example JSON Structure:**
+```json
+{
+  "name": "Example Racing Circuit",
+  "width": 5.0,
+  "start_position": {"x": 0.0, "y": 0.0, "z": 0.0},
+  "segments": [
+    {"type": "straight", "length": 120.0},
+    {"type": "curve", "length": 39.3, "radius": 25.0, "angle": 90.0, "direction": "right"}
+  ],
+  "total_length": 588.5,
+  "num_segments": 8
+}
+```
 
 ### Running with Existing Simulator Tracks
 
