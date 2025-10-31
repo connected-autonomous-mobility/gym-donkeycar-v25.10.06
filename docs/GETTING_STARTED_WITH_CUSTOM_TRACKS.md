@@ -134,16 +134,25 @@ with open("racing_circuit.json", "w") as f:
 
 ## Step 4: Visualize Your Track
 
-Use the included visualization script to see your track:
+Use the matplotlib visualization script to create high-quality plots of your track:
 
 ```bash
-python examples/visualize_track.py my_custom_track.json
+# Install matplotlib if needed
+pip install matplotlib
+
+# Display interactive plot
+python examples/visualize_track_matplotlib.py my_custom_track.json
+
+# Save to high-resolution file
+python examples/visualize_track_matplotlib.py my_custom_track.json --save my_track.png --dpi 300
 ```
 
 This will display:
-- A 2D top-down view of the track
-- Track statistics (length, number of segments, etc.)
-- Individual segment details
+- Professional 2D plot with track boundaries and center line
+- Track statistics (length, width, number of segments)
+- Segment ID labels with types
+- Start position marker
+- Grid reference lines
 
 See the [Track Visualization](#track-visualization) section below for more details.
 
@@ -313,13 +322,21 @@ env = gym.make("donkey-custom-track-v0", conf=conf)
 
 ## Track Visualization
 
-### Using the Visualization Script
+### Using the Matplotlib Visualization Script
 
-The Track Builder includes a visualization script that displays your track:
+The Track Builder includes a professional matplotlib-based visualization script:
 
 ```bash
-# Visualize a track file
-python examples/visualize_track.py my_custom_track.json
+# Install matplotlib
+pip install matplotlib
+# or
+pip install gym-donkeycar[viz]
+
+# Display interactive plot
+python examples/visualize_track_matplotlib.py my_custom_track.json
+
+# Save high-resolution image
+python examples/visualize_track_matplotlib.py my_custom_track.json --save my_track.png --dpi 300
 
 # Create and visualize in one command
 python -c "
@@ -330,15 +347,18 @@ track = create_simple_oval(length=100.0, width=60.0)
 with open('temp_track.json', 'w') as f:
     json.dump(track, f)
 print('Track saved to temp_track.json')
-print('Run: python examples/visualize_track.py temp_track.json')
+print('Run: python examples/visualize_track_matplotlib.py temp_track.json')
 "
 ```
 
 The visualization shows:
-- Track layout in 2D
-- Segment types (straight, curve, elevation)
+- Professional 2D plot with track boundaries and center line
+- Shaded track surface
+- Segment types with ID labels (straight, curve, elevation)
 - Measurements and angles
-- Start/finish position
+- Start position marker (green dot)
+- Track statistics overlay
+- Grid reference lines
 
 ## Example: Complete Workflow
 
@@ -377,7 +397,7 @@ print(f"  Segments: {track['num_segments']}")
 print(f"✓ Saved to: test_circuit.json")
 
 # Step 2: Visualize (optional)
-print("\nVisualize with: python examples/visualize_track.py test_circuit.json")
+print("\nVisualize with: python examples/visualize_track_matplotlib.py test_circuit.json")
 
 # Step 3: Run in simulator (using built-in track for now)
 print("\nStarting simulator...")

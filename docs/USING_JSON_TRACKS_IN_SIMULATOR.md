@@ -39,17 +39,22 @@ The simulator loads scenes that are compiled into the executable. It does **not*
 
 ### Option 1: Visualize and Plan (No Build Required) ✅
 
-Use the JSON files with visualization tools:
+Use the JSON files with the matplotlib visualization tool:
 
 ```bash
-# Create high-quality plots
+# Install matplotlib
+pip install matplotlib
+# or
+pip install gym-donkeycar[viz]
+
+# Display interactive plot
+python examples/visualize_track_matplotlib.py sample_track.json
+
+# Create high-quality plots for documentation
 python examples/visualize_track_matplotlib.py sample_track.json --save track.png --dpi 300
 
-# View in terminal
-python examples/visualize_track.py sample_track.json
-
-# Enhanced visualization
-python examples/visualize_track_enhanced.py sample_track.json --width 100 --height 50
+# Export to PDF for presentations
+python examples/visualize_track_matplotlib.py sample_track.json --save track.pdf --dpi 300
 ```
 
 **Use cases:**
@@ -57,6 +62,7 @@ python examples/visualize_track_enhanced.py sample_track.json --width 100 --heig
 - Track design iteration
 - Team collaboration and review
 - Research papers and reports
+- High-resolution prints
 
 ### Option 2: Use as Blueprint for Unity (Requires Unity) 🔧
 

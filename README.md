@@ -160,10 +160,8 @@ figure_eight = create_figure_eight(size=50.0)
 - [Track Builder Quick Start](examples/TRACK_BUILDER_QUICKSTART.md) - Quick reference
 - [Track Builder API Documentation](docs/TRACK_BUILDER.md) - Full API reference
 - [Example Scripts](examples/create_custom_track.py) - Code examples
+- [Track Visualization](examples/visualize_track_matplotlib.py) - **Professional graphical plots with matplotlib**
 - [Sample Track Visualization](examples/sample_track_visualization.png) - **High-res example (300 DPI)**
-- [Track Visualization](examples/visualize_track.py) - Basic ASCII visualization
-- [Matplotlib Visualization](examples/visualize_track_matplotlib.py) - **Professional graphical plots with matplotlib**
-- [Enhanced ASCII Visualization](examples/visualize_track_enhanced.py) - ASCII with boundaries and segment IDs
 
 ## Codestyle
 

@@ -55,13 +55,24 @@ Comprehensive examples showing how to create custom tracks programmatically usin
 - Saving and loading track configurations
 - Complex racing circuits
 
-## visualize_track.py
+## visualize_track_matplotlib.py
 
-Basic track visualization from JSON files. Displays:
-- 2D top-down ASCII visualization of the track layout
-- Detailed track statistics (length, width, segments)
-- Individual segment information (type, length, angles, etc.)
-- Summary of segment types
+**Professional track visualization using matplotlib** - Creates high-quality graphical plots from JSON track files. Features:
+- **Left and right track boundaries** with clear lines
+- **Center line** (dashed red line)
+- **Shaded track surface** (filled polygon between boundaries)
+- **Segment IDs** with labels showing segment types
+- **Start position marker** (green dot)
+- **Track statistics** displayed on plot
+- **Grid lines** for reference
+- **Export to PNG/PDF/SVG** with customizable DPI
+
+Requirements:
+```bash
+pip install matplotlib
+# or
+pip install gym-donkeycar[viz]
+```
 
 Usage:
 ```bash
@@ -70,55 +81,17 @@ python -c "from gym_donkeycar.core import create_simple_oval; import json; \
            track = create_simple_oval(); \
            json.dump(track, open('my_track.json', 'w'), indent=2)"
 
-# Visualize it
-python visualize_track.py my_track.json
-```
-
-## visualize_track_matplotlib.py
-
-**Professional track visualization using matplotlib** - Creates high-quality graphical plots. Features:
-- **Left and right track boundaries** with clear lines
-- **Center line** (dashed red line)
-- **Shaded track surface** (filled polygon between boundaries)
-- **Segment IDs** with labels showing segment types
-- **Start position marker** (green dot)
-- **Track statistics** displayed on plot
-- **Grid lines** for reference
-- **Export to PNG/PDF** with customizable DPI
-
-Requirements:
-```bash
-pip install matplotlib
-```
-
-Usage:
-```bash
 # Display interactive plot
 python visualize_track_matplotlib.py my_track.json
 
 # Save to file
 python visualize_track_matplotlib.py my_track.json --save my_track.png
 
-# High resolution output
+# High resolution output (300 DPI)
 python visualize_track_matplotlib.py my_track.json --save my_track.png --dpi 300
-```
 
-## visualize_track_enhanced.py
-
-**Enhanced ASCII track visualization** with detailed boundaries and styling. Shows:
-- **Left and right track boundaries** (clear edge markers)
-- **Center line** (dashed line down the middle)
-- **Shaded track surface** (filled area between boundaries)
-- **Segment IDs** (numbered markers for each segment)
-- **Clear boundary visualization** (distinguishable track edges)
-
-Usage:
-```bash
-# Basic usage
-python visualize_track_enhanced.py my_track.json
-
-# Custom dimensions
-python visualize_track_enhanced.py my_track.json --width 100 --height 50
+# Disable grid
+python visualize_track_matplotlib.py my_track.json --no-grid
 ```
 
 See also: [Track Builder Quick Start Guide](TRACK_BUILDER_QUICKSTART.md)
