@@ -1,6 +1,15 @@
 # Examples
 
-some sample code to use the gym-donkeycar environment
+Sample code demonstrating gym-donkeycar environment usage and Track Builder API
+
+## 📚 Track Builder Documentation
+
+For complete documentation on creating custom tracks, see:
+- **[Documentation Index](../docs/TRACK_BUILDER_INDEX.md)** - Navigate all Track Builder documentation
+- **[Getting Started Guide](../docs/TRACK_BUILDER_GETTING_STARTED.md)** - Step-by-step tutorial
+- **[API Reference](../docs/TRACK_BUILDER_API_REFERENCE.md)** - Complete API documentation
+- **[PRD](../docs/TRACK_BUILDER_PRD.md)** - Product vision and requirements
+- **[Quick Reference](TRACK_BUILDER_QUICKSTART.md)** - One-page cheat sheet
 
 ## Sample Track Visualization
 
@@ -26,7 +35,7 @@ The sample track (`sample_track.json`) demonstrates:
 2. **As a blueprint for Unity development:**
    - Load the JSON to understand track layout
    - Use the segment data to build track geometry in Unity
-   - See [Getting Started Guide](../docs/GETTING_STARTED_WITH_CUSTOM_TRACKS.md) for details
+   - See [Simulator Integration Guide](../docs/TRACK_BUILDER_SIMULATOR_GUIDE.md) for details
 
 3. **Track design reference:**
    ```python
@@ -39,7 +48,7 @@ The sample track (`sample_track.json`) demonstrates:
        print(f"{seg['type']}: {seg['length']}m")
    ```
 
-**To run in the simulator:** Use built-in tracks like `donkey-generated-track-v0` or build a custom Unity scene following the [Getting Started Guide](../docs/GETTING_STARTED_WITH_CUSTOM_TRACKS.md#can-i-use-the-json-track-in-the-simulator-without-building-from-source).
+**To run in the simulator:** Use built-in tracks like `donkey-generated-track-v0` or build a custom Unity scene following the [Simulator Integration Guide](../docs/TRACK_BUILDER_SIMULATOR_GUIDE.md).
 
 ## gym_test.py
 
