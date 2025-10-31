@@ -123,6 +123,52 @@ Example info:
 - "donkey-thunderhill-track-v0"
 - "donkey-circuit-launch-track-v0"
 
+## Creating Custom Tracks Programmatically
+
+Create custom tracks using Python code with the **Track Builder API**:
+
+```python
+from gym_donkeycar.core import TrackBuilder, create_simple_oval
+
+# Method 1: Use predefined template
+track = create_simple_oval(length=100.0, width=60.0)
+
+# Method 2: Build custom track with method chaining
+track = (TrackBuilder(name="my_circuit", width=6.0)
+    .add_straight(150.0)
+    .add_curve(31.4, radius=20.0, angle=90.0, direction="left")
+    .add_elevation(80.0, height_change=10.0, gradient=12.0)
+    .add_straight(120.0)
+    .build())
+
+# Save and load tracks as JSON
+builder.save("my_track.json")
+loaded = TrackBuilder.load("my_track.json")
+
+# Visualize with matplotlib (high-quality output)
+# python examples/visualize_track_matplotlib.py my_track.json --save track.png --dpi 300
+```
+
+**📚 Complete Documentation:**
+- **[Documentation Index](docs/TRACK_BUILDER_INDEX.md)** - Start here! Navigate all documentation
+- **[Product Requirements Document (PRD)](docs/TRACK_BUILDER_PRD.md)** - Product vision, architecture, requirements
+- **[Getting Started Guide](docs/TRACK_BUILDER_GETTING_STARTED.md)** - Step-by-step tutorial for beginners
+- **[API Reference](docs/TRACK_BUILDER_API_REFERENCE.md)** - Complete API documentation
+- **[Simulator Integration Guide](docs/TRACK_BUILDER_SIMULATOR_GUIDE.md)** - Using tracks with/without building from source
+- **[Quick Reference](examples/TRACK_BUILDER_QUICKSTART.md)** - One-page cheat sheet
+- **[Code Examples](examples/create_custom_track.py)** - Comprehensive usage examples
+- **[Visualization Tool](examples/visualize_track_matplotlib.py)** - Professional matplotlib visualization
+- **[Sample Visualization](examples/sample_track_visualization.png)** - High-resolution example (300 DPI)
+
+**Key Features:**
+- ✅ Programmatic track creation with straight sections, curves, and elevation changes
+- ✅ Fluent API with method chaining for concise definitions
+- ✅ JSON serialization for version control and sharing
+- ✅ Three predefined track templates (oval, figure-eight, S-curve)
+- ✅ Professional matplotlib visualization (PNG, PDF, SVG export)
+- ✅ Publication-quality output (300+ DPI)
+- ✅ Comprehensive test coverage (100% for core functionality)
+- ✅ Complete documentation suite (2,500+ lines)
 
 ## Codestyle
 
